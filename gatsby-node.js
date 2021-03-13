@@ -24,7 +24,11 @@ exports.createPages = async ({graphql, actions}) => {
                     node {
                         frontmatter {
                             title
+                            description
+                            criteria
                         }
+                        id
+                        body
                         slug
                     }
                 }
@@ -33,12 +37,12 @@ exports.createPages = async ({graphql, actions}) => {
     `)
 
     res.data.allMdx.edges.forEach(({node}) => {
-        console.log('%c [node]', 'color:orange; background: purple', node)
         createPage({
             path: `component-listing/${node.slug}`,
-            component: path.resolve(`./src/templates/criteria-template.jsx`),
+            component: path.resolve(`./src/templates/criteria-template.tsx`),
             context: {
-                slug: node.slug
+                slug: node.slug,
+                criteria: node
             }
         })
     })

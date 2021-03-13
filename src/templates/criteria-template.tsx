@@ -1,9 +1,23 @@
 import React from 'react';
-import {graphql} from 'gatsby';
 import {MDXRenderer} from 'gatsby-plugin-mdx';
 import Layout from '../components/Layout/Layout';
 import ContentGrab from '../components/ContentGrab/ContentGrab';
 import styled from 'styled-components';
+
+interface CriteriaI {
+    pageContext: {
+        criteria: {
+            frontmatter: {
+                title: string,
+                description: string,
+                criteria: string,
+            }
+            id: string,
+            body: string
+        }
+    }
+    
+}
 
 const StyledContainer = styled.section`
     max-width: 40vw;
@@ -20,10 +34,11 @@ const StyledContainer = styled.section`
             margin-top: 3.6rem;
         }
     }
-`
+`;
 
-const CriteriaTemplate = ({data}) => {
-    const {criteria} = data;
+
+const CriteriaTemplate: React.FC<CriteriaI> = ({pageContext}) => {
+    const {criteria} = pageContext;
 
     return (
         <Layout header={criteria.frontmatter.title}>
@@ -37,19 +52,5 @@ const CriteriaTemplate = ({data}) => {
         </Layout>
     )
 }
-
-export const query = graphql`
-    query AcQuerry($slug: String!) {
-        criteria: mdx(slug: {eq: $slug}) {
-            frontmatter {
-                title
-                description
-                criteria
-            }
-            id
-            body
-        }
-    }
-`
 
 export default CriteriaTemplate;

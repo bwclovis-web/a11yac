@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 
 const HeaderStyles = styled.header`
@@ -6,11 +6,15 @@ const HeaderStyles = styled.header`
     padding: 20px 0;
 `;
 
-const Header = ({content}) => {
+interface HeaderI {
+    content: string
+}
+
+const Header = (props: HeaderI): ReactElement => {
     return(
         <HeaderStyles>
             <div className="container">
-                <h1>{content}</h1>
+                <h1>{props.content}</h1>
             </div>
         </HeaderStyles>
     )

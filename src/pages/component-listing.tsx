@@ -3,6 +3,23 @@ import styled from 'styled-components';
 import React from 'react';
 import Layout from '../components/Layout/Layout';
 
+interface ComponentListPageI {
+    data: {
+        allMdx: {
+            edges: {
+                info: {
+                    frontmatter: {
+                        title: string,
+                        tag: string
+                    }
+                    slug: string
+                    id: string
+                }
+            }
+        }
+    }
+}
+
 const StyledList = styled.ul`
     li {
         a {
@@ -12,14 +29,14 @@ const StyledList = styled.ul`
     }
 `
 
-const ComponentListingPage = ({data}) => {
+const ComponentListingPage: React.FC<ComponentListPageI> = ({data}) => {
     const {edges} = data.allMdx;
     return(
         <Layout header="component listing">
             <StyledList>
-                {edges.map(node => {
+                {edges instanceof Array && edges.map(node => {
                     return (
-                        <li>
+                        <li key={node.info.id}>
                             <Link to={`/component-listing/${node.info.slug}`}>
                                 {node.info.frontmatter.title}
                             </Link>
@@ -41,6 +58,7 @@ query slugQuery {
                     tag
                 }
                 slug
+                id
             }
         }
     }

@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navigation should render correctly  1`] = `
+<nav
+  className="sc-bdfBwQ bBvudt"
+>
+  <ul>
+    <li>
+      <a
+        href="/new-component"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+      >
+        New Component
+      </a>
+    </li>
+    <li>
+      <a
+        href="/component-listing"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+      >
+        Current Components
+      </a>
+    </li>
+  </ul>
+</nav>
+`;

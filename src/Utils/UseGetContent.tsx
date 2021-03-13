@@ -3,13 +3,13 @@ import { useState } from 'react';
 const UseGetContext = () => {
     const [clicked, setIsClicked] = useState(false);
 
-    const toggleOff = () => {
+    const toggleOff = ():void => {
         setTimeout(() => {
             setIsClicked(false);
         }, 1000)
     }
 
-    const updateContent = () => {
+    const updateContent = ():void => {
         if(!clicked) {
             setIsClicked(true);
             toggleOff()

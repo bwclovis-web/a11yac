@@ -7,6 +7,11 @@ import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 import Head from '../Head/Head';
 
+interface ContainerI {
+    header: string;
+    children: JSX.Element[] | JSX.Element
+}
+
 const ContainerStyles = styled.div`
     display: flex;
 
@@ -16,7 +21,7 @@ const ContainerStyles = styled.div`
     }
 `;
 
-const Layout = ({header, children}) => (
+const Layout: React.FC<ContainerI> = ({header, children}) => (
  <>
     <GlobalStyles />
     <Typogrgaphy />
