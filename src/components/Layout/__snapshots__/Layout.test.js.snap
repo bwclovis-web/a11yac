@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout should render correctly  1`] = `
+Array [
+  <header
+    className="sc-bdfBwQ joBAPR"
+  >
+    <div
+      className="container"
+    >
+      <h1 />
+    </div>
+  </header>,
+  <div
+    className="sc-dlfnbm cfIvPp"
+  >
+    <nav
+      className="sc-gsTCUz lipnIV"
+    >
+      <ul>
+        <li>
+          <a
+            href="/new-component"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            New Component
+          </a>
+        </li>
+        <li>
+          <a
+            href="/component-listing"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            Current Components
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <main />
+  </div>,
+]
+`;

@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentGrab should handle click 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <div
+      className="sc-bdfBwQ fsRAul"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": undefined,
+        }
+      }
+    />
+    <button
+      aria-busy={false}
+      className="btn"
+      onClick={[Function]}
+      type="button"
+    >
+      Copy Acceptance Criteria
+    </button>
+  </div>
+</div>
+`;
+
+exports[`ContentGrab should handle click 2`] = `
+<div>
+  <div
+    className="container"
+  >
+    <div
+      className="sc-bdfBwQ izxXIw"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": undefined,
+        }
+      }
+    />
+    <button
+      aria-busy={true}
+      className="btn"
+      onClick={[Function]}
+      type="button"
+    >
+      Copy Acceptance Criteria
+    </button>
+  </div>
+</div>
+`;
+
+exports[`ContentGrab should render correctly  1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <div
+      className="sc-bdfBwQ fsRAul"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": undefined,
+        }
+      }
+    />
+    <button
+      aria-busy={false}
+      className="btn"
+      onClick={[Function]}
+      type="button"
+    >
+      Copy Acceptance Criteria
+    </button>
+  </div>
+</div>
+`;
