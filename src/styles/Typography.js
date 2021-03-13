@@ -44,6 +44,7 @@ const Typography = createGlobalStyle`
         text-transform: uppercase;
         font-size: 2rem;
         letter-spacing: 0.17rem;
+        margin-top: 4rem;
     }
 
     a{text-decoration:none; color:inherit; cursor:pointer;}

@@ -5,22 +5,24 @@ import {copyToClipboard} from './utility';
 
 const InputStyles = styled.div`
     border: 1px solid var(--grey);
-    margin-bottom: 2rem;
     padding: 1rem 1.4rem;
     position: relative;
     max-height: 230px;
     overflow-Y: auto;
 
     &._active {
-        &::before {
-            content: '';
-            display: block;
-            background: rebeccapurple;
-            width: 50px;
-            height: 50px;
-            position: absolute;
-            bottom: 0;
-        }
+        animation-name: textSelect;
+        animation-duration: 1s;
+    }
+
+    .alert {
+        position: absolute;
+    }
+
+    @keyframes textSelect {
+        0% {opacity: 1;}
+        50% {opacity: 0.3;}
+        100% {opacity: 1}
     }
 
 `;
@@ -37,7 +39,7 @@ const ContentGrab = ({content}) => {
         <div>
             <div className="container">
                 <InputStyles ref={contentRef} className={clicked && '_active'} dangerouslySetInnerHTML={{__html: content}} />
-                <button type="button" className="btn" onClick={handleCopyClick}>Copy Acceptance Criteria</button>
+                <button type="button" aria-busy={clicked} className="btn" onClick={handleCopyClick}>Copy Acceptance Criteria</button>
             </div>
         </div>
     )
