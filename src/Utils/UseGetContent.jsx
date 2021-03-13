@@ -6,7 +6,7 @@ const UseGetContext = () => {
     const toggleOff = () => {
         setTimeout(() => {
             setIsClicked(false);
-        }, 3000)
+        }, 1000)
     }
 
     const updateContent = () => {
@@ -16,7 +16,7 @@ const UseGetContext = () => {
         }
     }
 
-    return {clicked, updateContent}
+    return {clicked, updateContent, setIsClicked}
 }
 
 export default UseGetContext;
