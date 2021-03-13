@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {MDXRenderer} from 'gatsby-plugin-mdx';
 import Layout from '../components/Layout/Layout';
 import ContentGrab from '../components/ContentGrab/ContentGrab';
@@ -19,8 +19,13 @@ interface CriteriaI {
     
 }
 
-const StyledContainer = styled.section`
+const StyledContainer = styled.section<{ready: boolean}>`
+    transition: all .2s ease-in-out;
     max-width: 40vw;
+    opacity: ${props => props.ready ? 1 : 0};
+    transform: ${props => props.ready ? `translateX(0)` : `translateX(-10vw)` };
+    position: relative;
+    z-index: 4;
 
     & > p {
         font-size: 2rem;
@@ -39,10 +44,17 @@ const StyledContainer = styled.section`
 
 const CriteriaTemplate: React.FC<CriteriaI> = ({pageContext}) => {
     const {criteria} = pageContext;
+    const [pageReady, setPageReady] = useState(false)
+
+    useEffect(() => {
+        setTimeout(() => {
+            setPageReady(true)
+        })
+    });
 
     return (
         <Layout header={criteria.frontmatter.title}>
-            <StyledContainer>
+            <StyledContainer ready={pageReady}>
                 <p>{criteria.frontmatter.description}</p>
                 <ContentGrab content={criteria.frontmatter.criteria}/>
                 <div className="mdx-content">

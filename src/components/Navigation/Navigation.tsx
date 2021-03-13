@@ -8,6 +8,7 @@ const NavigationStyles = styled.nav`
     position: sticky;
     height: calc(100vh - 94px);
     padding: 120px 100px;
+    z-index: 6;
 `
 
 const Navigation = () => (
