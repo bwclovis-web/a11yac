@@ -6,6 +6,7 @@ import Typogrgaphy from '../../styles/Typography';
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 import Head from '../Head/Head';
+import AlertMessage from '../Alert/Alert';
 
 interface ContainerI {
     header: string;
@@ -30,7 +31,10 @@ const Layout: React.FC<ContainerI> = ({header, children}) => (
      <ContainerStyles>
         <Navigation />
         <main>
-            {children}
+            <>
+                <AlertMessage alertMessage="saved to clipboard successfully"/>
+                {children}
+            </>
         </main>
      </ContainerStyles>
  </>

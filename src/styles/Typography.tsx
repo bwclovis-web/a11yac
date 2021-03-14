@@ -54,6 +54,10 @@ const Typography = createGlobalStyle`
             box-shadow: inset 0 0 0 3px var(--blue-lt);
             outline: 0;
         }
+        &[aria-busy=true] {
+            background-color: var(--grey);
+            box-shadow: inset 0 0 0 1px var(--grey-dk);
+        }
     }
 
     a{text-decoration:none; color:inherit; cursor:pointer;}
