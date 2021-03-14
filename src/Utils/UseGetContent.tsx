@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const UseGetContext = (defaultValue: boolean = false) => {
+const UseGetContext = (defaultValue: boolean) => {
     const [clicked, setIsClicked] = useState(defaultValue);
 
     const toggleOff = () => {
@@ -16,7 +16,7 @@ const UseGetContext = (defaultValue: boolean = false) => {
         }
     }
 
-    return [clicked, updateContent, setIsClicked] as const
+    return [clicked, updateContent] as const;
 }
 
 export default UseGetContext;

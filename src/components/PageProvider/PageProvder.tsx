@@ -1,13 +1,24 @@
 import React from 'react'
 import UseGetContent from '../../Utils/UseGetContent'
 
-const PageContext = React.createContext<boolean[] | (()=> void)[] | []>([]);
+type ContextProps = {
+    clicked?: boolean,
+    updateContent(): void
+}
+
+const PageContext = React.createContext<ContextProps>({
+    clicked: false,
+    updateContent(){}
+});
 
 export const PageProvider: React.FC<React.ReactNode> = ({children}) => {
-    const [clicked, updateContent] = UseGetContent();
+    const [clicked, updateContent] = UseGetContent(false);
 
     return (
-        <PageContext.Provider value={[clicked, updateContent]}>
+        <PageContext.Provider value={{
+            clicked: clicked,
+            updateContent: updateContent
+        }}>
             {children}
         </PageContext.Provider>
     )

@@ -9,7 +9,7 @@ interface ConetentI {
 }
 
 interface InputStylesI {
-    isClicked: boolean
+    clicked: boolean
 }
 
 const InputStyles = styled.div<InputStylesI>`
@@ -18,7 +18,7 @@ const InputStyles = styled.div<InputStylesI>`
     position: relative;
     max-height: 230px;
     overflow-Y: auto;
-    animation-name: ${props => props.isClicked ? 'textSelect' : null};
+    animation-name: ${props => props.clicked ? 'textSelect' : null};
     animation-duration: 1s;
 
     @keyframes textSelect {
@@ -30,7 +30,7 @@ const InputStyles = styled.div<InputStylesI>`
 
 const ContentGrab = (props: ConetentI ) => {
     const contentRef = useRef<HTMLDivElement | null>(null);
-    const [clicked, updateContent] = useContext(PageContext);
+    const {clicked, updateContent} = useContext(PageContext);
 
     const handleCopyClick = () => {
         contentRef.current && copyToClipboard(contentRef.current.innerHTML);
@@ -40,7 +40,7 @@ const ContentGrab = (props: ConetentI ) => {
     return (
         <div>
             <div className="container">
-                <InputStyles ref={contentRef} isClicked={clicked} dangerouslySetInnerHTML={{__html: props.content}} />
+                <InputStyles ref={contentRef} clicked={clicked} dangerouslySetInnerHTML={{__html: props.content}} />
                 <button type="button" aria-busy={clicked} className="btn" onClick={handleCopyClick}>Copy Acceptance Criteria</button>
             </div>
         </div>
