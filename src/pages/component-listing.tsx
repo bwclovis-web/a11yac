@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import React, {useState} from 'react';
 import Layout from '../components/Layout/Layout';
 import FilterBanner from '../components/Filter/Filter';
-
 interface ComponentListPageI {
     data: {
         allMdx: {
@@ -20,20 +19,17 @@ interface ComponentListPageI {
         }
     }
 }
-
 interface ListItemStylesI {
     isFiltered: boolean
 }
 
 const StyledListItem = styled.li<ListItemStylesI>`
-    
     a {
         font-size: 2.6rem;
         color: var(--black);
-        display: ${props => props.isFiltered ? 'block' : 'none'};
+        display: ${props => props.isFiltered ? 'inline' : 'none'};
         letter-spacing: 0.12rem;
     }
-
 `
 
 const ComponentListingPage: React.FC<ComponentListPageI> = ({data}) => {

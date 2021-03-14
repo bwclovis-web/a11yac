@@ -10,6 +10,8 @@ interface ConetentI {
 
 interface InputStylesI {
     clicked: boolean
+    tabIndex: string
+    ref:string
 }
 
 const InputStyles = styled.div<InputStylesI>`
@@ -40,7 +42,7 @@ const ContentGrab = (props: ConetentI ) => {
     return (
         <div>
             <div className="container">
-                <InputStyles ref={contentRef} clicked={clicked} dangerouslySetInnerHTML={{__html: props.content}} />
+                <InputStyles ref={contentRef} clicked={clicked} dangerouslySetInnerHTML={{__html: props.content}} tabIndex="0"/>
                 <button type="button" aria-busy={clicked} className="btn" onClick={() => handleCopyClick()}>Copy Acceptance Criteria</button>
             </div>
         </div>

@@ -7,6 +7,7 @@ import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 import Head from '../Head/Head';
 import AlertMessage from '../Alert/Alert';
+import * as types from 'styled-components/cssprop'
 
 interface ContainerI {
     header: string;

@@ -38,6 +38,23 @@ const StyledContainer = styled.section<{ready: boolean}>`
         h2 {
             margin-top: 3.6rem;
         }
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: var(--blue-md);
+            padding: 10px;
+
+            &:hover,
+            &:focus {
+                text-decoration: underline;
+            }
+
+            &:focus {
+                box-shadow: inset 0 0 0 3px var(--grey-dk);
+            }
+        }
     }
 `;
 

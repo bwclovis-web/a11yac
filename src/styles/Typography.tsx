@@ -7,11 +7,13 @@ const Typography = createGlobalStyle`
     @font-face {
         font-family: Montserrat;
         src: url(${headerFont});
+        font-display: swap;
     }
 
     @font-face {
         font-family: Lato;
         src: url(${font});
+        font-display: swap;
     }
 
     html, body {
