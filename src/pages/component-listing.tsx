@@ -1,7 +1,8 @@
 import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
-import React from 'react';
+import React, {useState} from 'react';
 import Layout from '../components/Layout/Layout';
+import FilterBanner from '../components/Filter/Filter';
 
 interface ComponentListPageI {
     data: {
@@ -20,30 +21,40 @@ interface ComponentListPageI {
     }
 }
 
-const StyledList = styled.ul`
-    li {
-        a {
-            font-size: 2.6rem;
-            colot: var(--black);
-        }
+interface ListItemStylesI {
+    isFiltered: string
+}
+
+const StyledListItem = styled.li<ListItemStylesI>`
+    
+    a {
+        font-size: 2.6rem;
+        color: var(--black);
+        display: ${props => props.isFiltered ? 'block' : 'none'}
     }
+
 `
 
 const ComponentListingPage: React.FC<ComponentListPageI> = ({data}) => {
     const {edges} = data.allMdx;
+    const [filtered, setIsFiltered] = useState('init');
+
     return(
         <Layout header="component listing">
-            <StyledList>
+            <FilterBanner data={edges} setFiltered={setIsFiltered}/>
+            <ul>
                 {edges instanceof Array && edges.map(node => {
+                    console.log('%c [filtered]', 'color:orange; background: purple', filtered)
+                    console.log('%c [thing]', 'color:orange; background: purple', node.info.frontmatter.tag === filtered)
                     return (
-                        <li key={node.info.id}>
+                        <StyledListItem key={node.info.id} isFiltered={node.info.frontmatter.tag === filtered || filtered === 'init'}>
                             <Link to={`/component-listing/${node.info.slug}`}>
                                 {node.info.frontmatter.title}
                             </Link>
-                        </li>
+                        </StyledListItem>
                     )
                 })}
-            </StyledList>
+            </ul>
         </Layout>
     )
 }
