@@ -47,7 +47,7 @@ const AlertMessage: React.FC<AlertInterface> = ({alertMessage}) => {
 
     return (
         <AlertStyles active={showAlert}>
-            <p className="h2" role="alert">
+            <p className="h3" role="alert">
                 {message}
             </p>
         </AlertStyles>

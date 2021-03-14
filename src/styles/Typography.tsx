@@ -28,9 +28,21 @@ const Typography = createGlobalStyle`
 
     h1 {
         color: var(--white);
-        font-size: clamp(2rem, 4vw, 4.6rem);
+        font-size: clamp(2.4rem, 4vw, 4.6rem);
         text-transform: uppercase;
         letter-spacing: 0.64rem;
+    }
+
+    h2, .h2 {
+        font-size: clamp(2rem, 4vw, 3.4rem);
+        text-transform: uppercase;
+        letter-spacing: 0.12rem;
+    }
+
+    h3, .h3 {
+        font-size: clamp(1.8rem, 4vw, 2.4rem);
+        text-transform: uppercase;
+        letter-spacing: 0.12rem;
     }
 
     p {
