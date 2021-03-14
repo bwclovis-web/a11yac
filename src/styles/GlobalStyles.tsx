@@ -4,9 +4,13 @@ const GlobalStyles = createGlobalStyle`
   :root {
     --red: #FF4949;
     --black: #2E2E2E;
+    --blue-lt: #21a2fd;
     --blue: #1471da;
+    --blue-md: #0F55A6;
     --white: #fff;
     --grey: #ccc;
+    --disabled: #606d6d;
+    --grey-dk: #414141;
   }
 
   html {
@@ -35,7 +39,8 @@ const GlobalStyles = createGlobalStyle`
     box-shadow: var(--cast) var(--cast) 0 var(--grey);
     text-shadow: 0.5px 0.5px 0 rgba(0,0,0,0.2);
     transition: all 0.2s;
-    &:hover {
+    &:hover,
+    &:focus {
       --cast: 4px;
     }
   }
@@ -47,17 +52,19 @@ const GlobalStyles = createGlobalStyle`
 
   /* Scrollbar Styles */
   body::-webkit-scrollbar {
-    width: 12px;
+    width: 6px;
   }
+
   html {
     scrollbar-width: thin;
-    scrollbar-color: var(--red) var(--white);
+    scrollbar-color: var(--blue-lt) var(--white);
   }
+
   body::-webkit-scrollbar-track {
     background: var(--white);
   }
   body::-webkit-scrollbar-thumb {
-    background-color: var(--red) ;
+    background-color: var(--blue-lt);
     border-radius: 6px;
     border: 3px solid var(--white);
   }
