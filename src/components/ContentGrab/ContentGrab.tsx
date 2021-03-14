@@ -8,13 +8,17 @@ interface ConetentI {
     content: string
 }
 
-const InputStyles = styled.div<{clicked: boolean}>`
+interface InputStylesI {
+    isClicked: boolean
+}
+
+const InputStyles = styled.div<InputStylesI>`
     border: 1px solid var(--grey);
     padding: 1rem 1.4rem;
     position: relative;
     max-height: 230px;
     overflow-Y: auto;
-    animation-name: ${props => props.clicked ? 'textSelect' : null};
+    animation-name: ${props => props.isClicked ? 'textSelect' : null};
     animation-duration: 1s;
 
     @keyframes textSelect {
@@ -36,7 +40,7 @@ const ContentGrab = (props: ConetentI ) => {
     return (
         <div>
             <div className="container">
-                <InputStyles ref={contentRef} clicked={clicked} dangerouslySetInnerHTML={{__html: props.content}} />
+                <InputStyles ref={contentRef} isClicked={clicked} dangerouslySetInnerHTML={{__html: props.content}} />
                 <button type="button" aria-busy={clicked} className="btn" onClick={handleCopyClick}>Copy Acceptance Criteria</button>
             </div>
         </div>

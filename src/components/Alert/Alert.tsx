@@ -3,7 +3,15 @@ import styled from 'styled-components'
 
 import PageContext from '../PageProvider/PageProvder';
 
-const AlertStyles = styled.div`
+interface AlertInterface {
+    alertMessage: string
+}
+
+interface AlertStylesI {
+    active?: boolean
+}
+
+const AlertStyles = styled.div<AlertStylesI>`
     position: absolute;
     top:  0;
     padding: 20px;
@@ -19,7 +27,7 @@ const AlertStyles = styled.div`
     transition: all .3s ease-in-out;
 `
 
-const AlertMessage = ({alertMessage}) => {
+const AlertMessage: React.FC<AlertInterface> = ({alertMessage}) => {
     const [clicked] = useContext(PageContext)
     const [showAlert, setShowAlert] = useState(false);
     const [message, setMessage] = useState('');
