@@ -1,7 +1,8 @@
-import React, {useRef} from 'react';
+import React, {useRef, useContext} from 'react';
 import styled from 'styled-components';
-import UseGetContent from '../../Utils/UseGetContent' 
 import {copyToClipboard} from './utility';
+
+import PageContext from '../PageProvider/PageProvder'
 
 interface ConetentI {
     content: string
@@ -25,7 +26,8 @@ const InputStyles = styled.div<{clicked: boolean}>`
 
 const ContentGrab = (props: ConetentI ) => {
     const contentRef = useRef<HTMLDivElement | null>(null);
-    const {clicked, updateContent} = UseGetContent();
+    const [clicked, updateContent] = useContext(PageContext);
+
     const handleCopyClick = () => {
         contentRef.current && copyToClipboard(contentRef.current.innerHTML);
         updateContent();

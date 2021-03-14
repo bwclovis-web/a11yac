@@ -1,7 +1,8 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/browser-apis/
- */
+import React from 'react';
+import {PageProvider} from './src/components/PageProvider/PageProvder';
 
-// You can delete this file if you're not using it
+export const wrapPageElement = ({element}) => (
+    <PageProvider>
+        {element}
+    </PageProvider>
+)

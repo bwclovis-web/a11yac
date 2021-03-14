@@ -1,22 +1,22 @@
 import { useState } from 'react';
 
-const UseGetContext = () => {
-    const [clicked, setIsClicked] = useState(false);
+const UseGetContext = (defaultValue: boolean = false) => {
+    const [clicked, setIsClicked] = useState(defaultValue);
 
-    const toggleOff = ():void => {
+    const toggleOff = () => {
         setTimeout(() => {
             setIsClicked(false);
         }, 1000)
     }
 
-    const updateContent = ():void => {
+    const updateContent = () => {
         if(!clicked) {
             setIsClicked(true);
             toggleOff()
         }
     }
 
-    return {clicked, updateContent, setIsClicked}
+    return [clicked, updateContent, setIsClicked] as const
 }
 
 export default UseGetContext;
