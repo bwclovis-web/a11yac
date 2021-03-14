@@ -45,6 +45,15 @@ const Typography = createGlobalStyle`
         font-size: 2rem;
         letter-spacing: 0.17rem;
         margin-top: 4rem;
+
+        &:hover,
+        &:focus {
+            background-color: var(--blue-md);
+        }
+        &:focus {
+            box-shadow: inset 0 0 0 3px var(--blue-lt);
+            outline: 0;
+        }
     }
 
     a{text-decoration:none; color:inherit; cursor:pointer;}
