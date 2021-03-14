@@ -19,6 +19,8 @@ const ContainerStyles = styled.div`
     main {
         padding: 12rem 6rem;
         position: relative;
+        width: 100%;
+        overflow: hidden;
     }
 `;
 

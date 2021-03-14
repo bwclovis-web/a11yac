@@ -22,7 +22,7 @@ interface ComponentListPageI {
 }
 
 interface ListItemStylesI {
-    isFiltered: string
+    isFiltered: boolean
 }
 
 const StyledListItem = styled.li<ListItemStylesI>`
@@ -30,7 +30,8 @@ const StyledListItem = styled.li<ListItemStylesI>`
     a {
         font-size: 2.6rem;
         color: var(--black);
-        display: ${props => props.isFiltered ? 'block' : 'none'}
+        display: ${props => props.isFiltered ? 'block' : 'none'};
+        letter-spacing: 0.12rem;
     }
 
 `
@@ -42,17 +43,20 @@ const ComponentListingPage: React.FC<ComponentListPageI> = ({data}) => {
     return(
         <Layout header="component listing">
             <FilterBanner data={edges} setFiltered={setIsFiltered}/>
-            <ul>
-                {edges instanceof Array && edges.map(node => {
-                    return (
-                        <StyledListItem key={node.info.id} isFiltered={node.info.frontmatter.tag === filtered || filtered === 'init'}>
-                            <Link to={`/component-listing/${node.info.slug}`}>
-                                {node.info.frontmatter.title}
-                            </Link>
-                        </StyledListItem>
-                    )
-                })}
-            </ul>
+            <div style={{marginTop: '60px'}}>
+                <h2> Component Listing</h2>
+                <ul>
+                    {edges instanceof Array && edges.map(node => {
+                        return (
+                            <StyledListItem key={node.info.id} isFiltered={node.info.frontmatter.tag === filtered || filtered === 'init'}>
+                                <Link to={`/component-listing/${node.info.slug}`}>
+                                    {node.info.frontmatter.title}
+                                </Link>
+                            </StyledListItem>
+                        )
+                    })}
+                </ul>
+            </div>
         </Layout>
     )
 }

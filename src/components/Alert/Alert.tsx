@@ -19,7 +19,7 @@ const AlertStyles = styled.div<AlertStylesI>`
     border-left: 1px solid var(--grey);
     border-right: 1px solid var(--grey);
     box-shadow: 0 0 10px 2px rgba(0,0,0, 0.3);
-    width: 100%;
+    width: 90%;
     z-index: 2;
     text-align: center;
     transform: ${props => props.active ? `translateY(0)` : `translateY(-10vw)` };
