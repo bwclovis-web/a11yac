@@ -25,8 +25,8 @@ const FilterBanner = ({data, setFiltered}) => {
 
     return(
         <div>
-            {tags && tags.map(tag => {
-                return <li>
+            {tags && tags.map((tag, i) => {
+                return <li key={i}>
                             <button onClick={(evt) =>handleTagSelect(evt)}>{tag}</button>
                         </li>
             })}

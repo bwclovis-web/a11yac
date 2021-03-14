@@ -44,8 +44,6 @@ const ComponentListingPage: React.FC<ComponentListPageI> = ({data}) => {
             <FilterBanner data={edges} setFiltered={setIsFiltered}/>
             <ul>
                 {edges instanceof Array && edges.map(node => {
-                    console.log('%c [filtered]', 'color:orange; background: purple', filtered)
-                    console.log('%c [thing]', 'color:orange; background: purple', node.info.frontmatter.tag === filtered)
                     return (
                         <StyledListItem key={node.info.id} isFiltered={node.info.frontmatter.tag === filtered || filtered === 'init'}>
                             <Link to={`/component-listing/${node.info.slug}`}>
