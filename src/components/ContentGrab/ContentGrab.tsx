@@ -41,7 +41,7 @@ const ContentGrab = (props: ConetentI ) => {
         <div>
             <div className="container">
                 <InputStyles ref={contentRef} clicked={clicked} dangerouslySetInnerHTML={{__html: props.content}} />
-                <button type="button" aria-busy={clicked} className="btn" onClick={handleCopyClick}>Copy Acceptance Criteria</button>
+                <button type="button" aria-busy={clicked} className="btn" onClick={() => handleCopyClick()}>Copy Acceptance Criteria</button>
             </div>
         </div>
     )

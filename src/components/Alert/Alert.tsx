@@ -28,7 +28,7 @@ const AlertStyles = styled.div<AlertStylesI>`
 `
 
 const AlertMessage: React.FC<AlertInterface> = ({alertMessage}) => {
-    const [clicked] = useContext(PageContext)
+    const {clicked} = useContext(PageContext)
     const [showAlert, setShowAlert] = useState(false);
     const [message, setMessage] = useState('');
 
