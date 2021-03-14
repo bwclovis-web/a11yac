@@ -31,7 +31,7 @@ exports[`ContentGrab should handle click 2`] = `
     className="container"
   >
     <div
-      className="sc-bdfBwQ izxXIw"
+      className="sc-bdfBwQ fsRAul"
       dangerouslySetInnerHTML={
         Object {
           "__html": undefined,
@@ -39,7 +39,7 @@ exports[`ContentGrab should handle click 2`] = `
       }
     />
     <button
-      aria-busy={true}
+      aria-busy={false}
       className="btn"
       onClick={[Function]}
       type="button"
