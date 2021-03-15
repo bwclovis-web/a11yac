@@ -17,10 +17,20 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     font-size: 62.5%;
     line-height: 1.5;
+    scrollbar-width: thin;
+    scrollbar-color: var(--blue-lt) var(--white);
+    height: 100%;
   }
 
   body {
     font-size: 2rem;
+    height: 100%;
+  }
+
+  #___gatsby,
+  #gatsby-focus-wrapper,
+  main {
+    height: 100%;
   }
 
   fieldset {
@@ -53,11 +63,6 @@ const GlobalStyles = createGlobalStyle`
   /* Scrollbar Styles */
   body::-webkit-scrollbar {
     width: 6px;
-  }
-
-  html {
-    scrollbar-width: thin;
-    scrollbar-color: var(--blue-lt) var(--white);
   }
 
   body::-webkit-scrollbar-track {

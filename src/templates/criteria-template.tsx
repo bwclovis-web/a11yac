@@ -36,8 +36,11 @@ const StyledContainer = styled.section<{ready: boolean}>`
         padding: 2rem 0 0;
 
         h2 {
-            margin-top: 3.6rem;
+            margin: 3.6rem 0 1rem;
+            border-top: 1px solid var(--grey);
+            padding-top: 2.4rem;
         }
+
         li {
             margin-bottom: 10px;
         }

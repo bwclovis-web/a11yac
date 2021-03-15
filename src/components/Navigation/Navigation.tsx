@@ -5,10 +5,10 @@ import styled from 'styled-components';
 const NavigationStyles = styled.nav`
     background-color: var(--grey);
     position: sticky;
-    height: calc(100vh - 94px);
     padding: 120px 100px;
     z-index: 6;
     width: 16%;
+    height: 100%;
 `
 
 const Navigation = () => (
