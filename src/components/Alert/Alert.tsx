@@ -8,14 +8,15 @@ interface AlertInterface {
 }
 
 interface AlertStylesI {
-    active?: boolean
+    active?: boolean,
+    theme?: string
 }
 
 const AlertStyles = styled.div<AlertStylesI>`
     position: absolute;
     top:  0;
     padding: 20px;
-    border-bottom: 4px solid var(--blue-lt);
+    border-bottom: 4px solid ${props => props.theme === 'dark' ? 'var(--grey-lt)' : 'var(--blue-lt)'};
     border-left: 1px solid var(--grey);
     border-right: 1px solid var(--grey);
     box-shadow: 0 0 10px 2px rgba(0,0,0, 0.3);
@@ -28,7 +29,7 @@ const AlertStyles = styled.div<AlertStylesI>`
 `
 
 const AlertMessage: React.FC<AlertInterface> = ({alertMessage}) => {
-    const {clicked} = useContext(PageContext)
+    const {clicked, theme} = useContext(PageContext)
     const [showAlert, setShowAlert] = useState(false);
     const [message, setMessage] = useState('');
 
@@ -46,7 +47,7 @@ const AlertMessage: React.FC<AlertInterface> = ({alertMessage}) => {
     }
 
     return (
-        <AlertStyles active={showAlert}>
+        <AlertStyles active={showAlert} theme={theme}>
             <p className="h3" role="alert">
                 {message}
             </p>

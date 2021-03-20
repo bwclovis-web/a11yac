@@ -3,7 +3,7 @@
 exports[`Layout should render correctly  1`] = `
 Array [
   <header
-    className="sc-bdfBwQ kwXgQh"
+    className="sc-bdfBwQ eaXbDy"
   >
     <div
       className="container"
@@ -12,10 +12,10 @@ Array [
     </div>
   </header>,
   <div
-    className="sc-hKgILt jCPEqj"
+    className="sc-hKgILt cKgRxk"
   >
     <nav
-      className="sc-gsTCUz cyIOrF"
+      className="sc-gsTCUz ddmDJW"
     >
       <ul>
         <li>
@@ -40,10 +40,10 @@ Array [
     </nav>
     <main>
       <div
-        className="sc-dlfnbm iizZVC"
+        className="sc-dlfnbm hMURuG"
       >
         <p
-          className="h2"
+          className="h3"
           role="alert"
         >
           

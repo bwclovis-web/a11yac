@@ -3,14 +3,16 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyles = createGlobalStyle`
   :root {
     --red: #FF4949;
-    --black: #2E2E2E;
+    --black: #121212;
     --blue-lt: #21a2fd;
     --blue: #1471da;
     --blue-md: #0F55A6;
     --white: #fff;
     --grey: #ccc;
     --disabled: #606d6d;
-    --grey-dk: #414141;
+    --grey-dk: #181818;
+    --grey-md: #404040;
+    --grey-lt: #e4e6eb;
   }
 
   html {
@@ -18,7 +20,7 @@ const GlobalStyles = createGlobalStyle`
     font-size: 62.5%;
     line-height: 1.5;
     scrollbar-width: thin;
-    scrollbar-color: var(--blue-lt) var(--white);
+    scrollbar-color: ${props => props.theme === 'dark' ? 'var(--grey-md) var(--black)' : 'var(--blue-lt) var(--white)'} ;
     height: 100%;
   }
 
@@ -39,7 +41,6 @@ const GlobalStyles = createGlobalStyle`
   }
 
   button {
-    background: var(--red);
     color: white;
     border: 0;
     padding: 0.6rem 1rem;

@@ -1,5 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import styled from 'styled-components';
+
+import PageContext from '../PageProvider/PageProvder';
 
 interface FilterI {
     data: {
@@ -12,10 +14,10 @@ interface FilterI {
             slug: string
         }
     },
-    setFiltered(): void
+    filtered(): boolean
 }
 
-const TagListStyles = styled.section`
+const TagListStyles = styled.section<{theme: string}>`
     position: absolute;
     top: 0;
     align-items: center;
@@ -30,7 +32,7 @@ const TagListStyles = styled.section`
     }
 
     button {
-        background-color: var(--grey-dk);
+        background-color: ${props => props.theme === 'dark' ? 'var(--grey-md)' : 'var(--grey-dk)'};
         color: var(--white);
         padding: .6rem 1rem .8rem;
         margin-left: .8rem;
@@ -47,8 +49,9 @@ const TagListStyles = styled.section`
     }
 ` 
 
-const FilterBanner: React.FC<FilterI> = ({data, setFiltered}) => {
+const FilterBanner: React.FC<FilterI> = ({data, filtered}) => {
     const [tags, setTags] = useState([]);
+    const {theme} = useContext(PageContext)
 
     useEffect(() => {
         generateTags(data)
@@ -68,14 +71,14 @@ const FilterBanner: React.FC<FilterI> = ({data, setFiltered}) => {
     const handleTagSelect = (evt) => {
         let thisTag = evt.target.innerHTML
         if (thisTag === 'reset') {
-            setFiltered('init')
+            filtered('init')
             return
         }
-        setFiltered(thisTag)
+        filtered(thisTag)
     }
 
     return(
-        <TagListStyles>
+        <TagListStyles theme={theme}>
             <h2>Filter Components</h2>
             <ul>
                 {tags && tags.map((tag, i) => {

@@ -1,8 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import {MDXRenderer} from 'gatsby-plugin-mdx';
 import Layout from '../components/Layout/Layout';
 import ContentGrab from '../components/ContentGrab/ContentGrab';
 import styled from 'styled-components';
+
+import PageContext from '../components/PageProvider/PageProvder';
 
 interface CriteriaI {
     pageContext: {
@@ -19,7 +21,12 @@ interface CriteriaI {
     
 }
 
-const StyledContainer = styled.section<{ready: boolean}>`
+interface ContainerSylesI {
+    ready: boolean
+    theme: string
+}
+
+const StyledContainer = styled.section<ContainerSylesI>`
     transition: all .2s ease-in-out;
     max-width: 40vw;
     opacity: ${props => props.ready ? 1 : 0};
@@ -46,7 +53,7 @@ const StyledContainer = styled.section<{ready: boolean}>`
         }
 
         a {
-            color: var(--blue-md);
+            color: ${props => props.theme === 'dark' ? 'var(--blue-lt)' : 'var(--blue-md)'};
             padding: 10px;
 
             &:hover,
@@ -55,7 +62,8 @@ const StyledContainer = styled.section<{ready: boolean}>`
             }
 
             &:focus {
-                box-shadow: inset 0 0 0 3px var(--grey-dk);
+                border-radius: 3px;
+                box-shadow: inset 0 0 0 3px ${props => props.theme === 'dark' ? 'var(--grey)' : 'var(--grey-dk)'};
             }
         }
     }
@@ -65,6 +73,7 @@ const StyledContainer = styled.section<{ready: boolean}>`
 const CriteriaTemplate: React.FC<CriteriaI> = ({pageContext}) => {
     const {criteria} = pageContext;
     const [pageReady, setPageReady] = useState(false)
+    const {theme} = useContext(PageContext)
 
     useEffect(() => {
         setTimeout(() => {
@@ -74,7 +83,7 @@ const CriteriaTemplate: React.FC<CriteriaI> = ({pageContext}) => {
 
     return (
         <Layout header={criteria.frontmatter.title}>
-            <StyledContainer ready={pageReady}>
+            <StyledContainer ready={pageReady} theme={theme}>
                 <p>{criteria.frontmatter.description}</p>
                 <ContentGrab content={criteria.frontmatter.criteria}/>
                 <div className="mdx-content">

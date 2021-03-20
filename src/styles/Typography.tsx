@@ -17,6 +17,7 @@ const Typography = createGlobalStyle`
     }
 
     html, body {
+        line-height: 1.5;
         font-family: Lato, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
 
@@ -24,12 +25,13 @@ const Typography = createGlobalStyle`
     h2, .h2,
     h3, .h2 {
         font-family: Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        color: var(--black);
+        theme={theme}
         font-weight: normal;
+        color: ${props => props.theme === 'dark' ? 'var(--grey-lt)' : '#111'};
     }
 
     h1 {
-        color: var(--white);
+        color: var(--grey-lt);
         font-size: clamp(2.4rem, 4vw, 4.6rem);
         text-transform: uppercase;
         letter-spacing: 0.64rem;
@@ -49,11 +51,13 @@ const Typography = createGlobalStyle`
 
     p {
         font-size: 1.8rem;
+        color: ${props => props.theme === 'dark' ? 'var(--grey-lt)' : '#111'};
     }
 
     .btn {
-        background-color: var(--blue);
+        background-color: ${props => props.theme === 'dark' ? 'transparent' : 'var(--blue)'};
         color: var(--white);
+        border: ${props => props.theme === 'dark' ? '2px solid var(--grey-lt)' : '0'};
         padding: 1rem 1.4rem;
         text-transform: uppercase;
         font-size: 2rem;
@@ -62,19 +66,30 @@ const Typography = createGlobalStyle`
 
         &:hover,
         &:focus {
-            background-color: var(--blue-md);
+            background-color: ${props => props.theme === 'dark' ? 'var(--grey-dk)' : 'var(--blue-md)'};
         }
+
         &:focus {
             box-shadow: inset 0 0 0 3px var(--blue-lt);
             outline: 0;
         }
+
         &[aria-busy=true] {
             background-color: var(--grey);
             box-shadow: inset 0 0 0 1px var(--grey-dk);
         }
     }
 
-    a{text-decoration:none; color:inherit; cursor:pointer;}
+    a {
+        text-decoration:none; 
+        color:inherit; 
+        cursor:pointer;
+        padding: 4px;
+        &:focus {
+            box-shadow: inset 0 0 0 1px ${props => props.theme === 'dark' ? 'var(--grey-lt)' : '#111'};
+            outline: 0;
+        }
+    }
     button{background-color:transparent; color:inherit; border-width:0; padding:0; cursor:pointer; box-shadow: none;}
     figure{margin:0;}
     input::-moz-focus-inner {border:0; padding:0; margin:0;}

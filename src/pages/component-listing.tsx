@@ -1,8 +1,9 @@
 import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
-import React, {useState} from 'react';
+import React, {useState,useContext} from 'react';
 import Layout from '../components/Layout/Layout';
 import FilterBanner from '../components/Filter/Filter';
+import PageContext from '../components/PageProvider/PageProvder';
 interface ComponentListPageI {
     data: {
         allMdx: {
@@ -20,31 +21,37 @@ interface ComponentListPageI {
     }
 }
 interface ListItemStylesI {
-    isFiltered: boolean
+    filtered: boolean
 }
 
 const StyledListItem = styled.li<ListItemStylesI>`
     a {
         font-size: 2.6rem;
-        color: var(--black);
-        display: ${props => props.isFiltered ? 'inline' : 'none'};
+        color: ${props => props.theme === 'dark' ? 'var(--grey-lt)' : 'var(--black)'};
+        display: ${props => props.filtered ? 'inline' : 'none'};
         letter-spacing: 0.12rem;
+
+        &:hover,
+        &:focus {
+           text-decoration: underline;
+        }
     }
 `
 
 const ComponentListingPage: React.FC<ComponentListPageI> = ({data}) => {
     const {edges} = data.allMdx;
+    const {theme} = useContext(PageContext)
     const [filtered, setIsFiltered] = useState('init');
 
     return(
         <Layout header="component listing">
-            <FilterBanner data={edges} setFiltered={setIsFiltered}/>
+            <FilterBanner data={edges} filtered={setIsFiltered}/>
             <div style={{marginTop: '60px'}}>
                 <h2> Component Listing</h2>
                 <ul>
                     {edges instanceof Array && edges.map(node => {
                         return (
-                            <StyledListItem key={node.info.id} isFiltered={node.info.frontmatter.tag === filtered || filtered === 'init'}>
+                            <StyledListItem key={node.info.id} filtered={node.info.frontmatter.tag === filtered || filtered === 'init'} theme={theme}>
                                 <Link to={`/component-listing/${node.info.slug}`}>
                                     {node.info.frontmatter.title}
                                 </Link>

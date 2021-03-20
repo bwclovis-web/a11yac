@@ -2,10 +2,10 @@
 
 exports[`Alert should render correctly  1`] = `
 <div
-  className="sc-bdfBwQ fbgfER"
+  className="sc-bdfBwQ gHRuNF"
 >
   <p
-    className="h2"
+    className="h3"
     role="alert"
   >
     
