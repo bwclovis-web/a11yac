@@ -1,9 +1,9 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect, useContext, SyntheticEvent } from 'react';
 import styled from 'styled-components';
 
 import PageContext from '../PageProvider/PageProvder';
 
-interface FilterI {
+type FilterI = {
     data: {
         info: {
             frontmatter: {
@@ -14,7 +14,7 @@ interface FilterI {
             slug: string
         }
     },
-    filtered(): boolean
+    setIsFiltered: (filtered: string) => void
 }
 
 const TagListStyles = styled.section<{theme: string}>`
@@ -49,7 +49,7 @@ const TagListStyles = styled.section<{theme: string}>`
     }
 ` 
 
-const FilterBanner: React.FC<FilterI> = ({data, filtered}) => {
+const FilterBanner: React.FC<FilterI> = ({data, setIsFiltered}) => {
     const [tags, setTags] = useState([]);
     const {theme} = useContext(PageContext)
 
@@ -57,24 +57,26 @@ const FilterBanner: React.FC<FilterI> = ({data, filtered}) => {
         generateTags(data)
     }, [])
     
-    const generateTags = (data) => {
-        const getAllTags = data.map(item => {
+    const generateTags = (data: any) => {
+        const getAllTags = data.map((item: any) => {
             return item.info.frontmatter.tag
         });
 
-        const uniqueTags =  getAllTags.filter((tag, i) => {
+        const uniqueTags = getAllTags.filter((tag: string, i: number) => {
             return tag.indexOf(tag) !== i;
         })
         setTags(uniqueTags)
     }
 
-    const handleTagSelect = (evt) => {
-        let thisTag = evt.target.innerHTML
+    const handleTagSelect = (evt: SyntheticEvent) => {
+        const target = evt.target as Element;
+        let thisTag = target.innerHTML
+
         if (thisTag === 'reset') {
-            filtered('init')
+            setIsFiltered('init')
             return
         }
-        filtered(thisTag)
+        setIsFiltered(thisTag)
     }
 
     return(

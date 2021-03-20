@@ -13,7 +13,7 @@ const PageContext = React.createContext<ContextProps>({
     clicked: false,
     updateContent(){},
     theme: '',
-    updateTheme(mode: string){null}
+    updateTheme(mode: string){}
 });
 
 export const PageProvider: React.FC<React.ReactNode> = ({children}) => {

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 const UseGetContext = (defaultValue: boolean) => {
-    const [clicked, setIsClicked] = useState(defaultValue);
+    const [clicked, setIsClicked] = useState<boolean>(defaultValue);
 
     const toggleOff = () => {
         setTimeout(() => {

@@ -26,6 +26,7 @@ interface ContainerSylesI {
     theme: string
 }
 
+
 const StyledContainer = styled.section<ContainerSylesI>`
     transition: all .2s ease-in-out;
     max-width: 40vw;
@@ -69,10 +70,9 @@ const StyledContainer = styled.section<ContainerSylesI>`
     }
 `;
 
-
 const CriteriaTemplate: React.FC<CriteriaI> = ({pageContext}) => {
     const {criteria} = pageContext;
-    const [pageReady, setPageReady] = useState(false)
+    const [pageReady, setPageReady] = useState<boolean>(false)
     const {theme} = useContext(PageContext)
 
     useEffect(() => {

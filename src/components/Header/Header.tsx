@@ -5,7 +5,7 @@ import ThemeToggle from '../ThemeToggle/ThemeToggle';
 interface HeaderI {
     content: string
     theme: string
-    updateTheme(): string
+    updateTheme(mode: string): void
 }
 
 interface HeaderStylesI {

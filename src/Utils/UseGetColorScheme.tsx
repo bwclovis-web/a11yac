@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 const UseGetColorScheme = (defaultValue: string) => {
-    const [theme, setTheme] = useState('');
+    const [theme, setTheme] = useState<string>('');
 
     const updateTheme = (mode: string) => {
         setTheme(mode)

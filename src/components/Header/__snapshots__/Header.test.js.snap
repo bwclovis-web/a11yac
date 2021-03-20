@@ -2,12 +2,18 @@
 
 exports[`Header should render correctly  1`] = `
 <header
-  className="sc-bdfBwQ eaXbDy"
+  className="sc-gsTCUz fGMqH"
 >
   <div
     className="container"
   >
     <h1 />
+    <button
+      className="sc-bdfBwQ deIdxu"
+      onClick={[Function]}
+    >
+      dark mode
+    </button>
   </div>
 </header>
 `;

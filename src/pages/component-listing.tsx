@@ -41,11 +41,11 @@ const StyledListItem = styled.li<ListItemStylesI>`
 const ComponentListingPage: React.FC<ComponentListPageI> = ({data}) => {
     const {edges} = data.allMdx;
     const {theme} = useContext(PageContext)
-    const [filtered, setIsFiltered] = useState('init');
+    const [filtered, setIsFiltered] = useState<string>('init');
 
     return(
         <Layout header="component listing">
-            <FilterBanner data={edges} filtered={setIsFiltered}/>
+            <FilterBanner data={edges} setIsFiltered={setIsFiltered}/>
             <div style={{marginTop: '60px'}}>
                 <h2> Component Listing</h2>
                 <ul>

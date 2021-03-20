@@ -3,19 +3,25 @@
 exports[`Layout should render correctly  1`] = `
 Array [
   <header
-    className="sc-bdfBwQ eaXbDy"
+    className="sc-gsTCUz fGMqH"
   >
     <div
       className="container"
     >
       <h1 />
+      <button
+        className="sc-bdfBwQ deIdxu"
+        onClick={[Function]}
+      >
+        dark mode
+      </button>
     </div>
   </header>,
   <div
-    className="sc-hKgILt cKgRxk"
+    className="sc-eCssSg dbFABd"
   >
     <nav
-      className="sc-gsTCUz ddmDJW"
+      className="sc-dlfnbm rCDUj"
     >
       <ul>
         <li>
@@ -40,7 +46,7 @@ Array [
     </nav>
     <main>
       <div
-        className="sc-dlfnbm hMURuG"
+        className="sc-hKgILt dlgEKj"
       >
         <p
           className="h3"

@@ -12,7 +12,7 @@ import PageContext from '../PageProvider/PageProvder';
 interface ContainerI {
     header: string
     children: JSX.Element[] | JSX.Element
-    updateTheme(mode: string): void
+    updateTheme?(mode: string): void
 }
 
 const ContainerStyles = styled.div`
