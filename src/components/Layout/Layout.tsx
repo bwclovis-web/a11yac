@@ -30,10 +30,10 @@ const ContainerStyles = styled.div`
 `;
 
 const Layout: React.FC<ContainerI> = ({header, children}) => {
-    const {theme, updateTheme} = useContext(PageContext)
+    const {theme, updateTheme, motionReduced} = useContext(PageContext)
     return (
         <>
-            <GlobalStyles theme={theme}/>
+            <GlobalStyles theme={theme} />
             <Typogrgaphy theme={theme}/>
             <Head title={header}/>
             <Header content={header} theme={theme} updateTheme={updateTheme}/>
@@ -41,7 +41,7 @@ const Layout: React.FC<ContainerI> = ({header, children}) => {
                 <Navigation theme={theme} />
                 <main>
                     <>
-                        <AlertMessage alertMessage="saved to clipboard successfully"/>
+                        <AlertMessage motionReduced={motionReduced} alertMessage="saved to clipboard successfully"/>
                         {children}
                     </>
                 </main>

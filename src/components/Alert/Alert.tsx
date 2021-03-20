@@ -4,12 +4,14 @@ import styled from 'styled-components'
 import PageContext from '../PageProvider/PageProvder';
 
 interface AlertInterface {
-    alertMessage: string
+    alertMessage: string,
+    motionReduced: boolean
 }
 
 interface AlertStylesI {
     active?: boolean,
-    theme?: string
+    theme?: string,
+    motionReduced: boolean
 }
 
 const AlertStyles = styled.div<AlertStylesI>`
@@ -25,10 +27,11 @@ const AlertStyles = styled.div<AlertStylesI>`
     text-align: center;
     transform: ${props => props.active ? `translateY(0)` : `translateY(-10vw)` };
     opacity: ${props => props.active ? 1 : 0};
-    transition: all .3s ease-in-out;
+    transition: opacity .3s ease-in-out;
+    transition: transform ${props => props.motionReduced ? 'none' : '.3s ease-in-out'};
 `
 
-const AlertMessage: React.FC<AlertInterface> = ({alertMessage}) => {
+const AlertMessage: React.FC<AlertInterface> = ({alertMessage, motionReduced}) => {
     const {clicked, theme} = useContext(PageContext)
     const [showAlert, setShowAlert] = useState(false);
     const [message, setMessage] = useState('');
@@ -47,7 +50,7 @@ const AlertMessage: React.FC<AlertInterface> = ({alertMessage}) => {
     }
 
     return (
-        <AlertStyles active={showAlert} theme={theme}>
+        <AlertStyles active={showAlert} theme={theme} motionReduced={motionReduced}>
             <p className="h3" role="alert">
                 {message}
             </p>

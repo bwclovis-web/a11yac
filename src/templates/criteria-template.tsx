@@ -18,17 +18,18 @@ interface CriteriaI {
             body: string
         }
     }
-    
 }
 
 interface ContainerSylesI {
     ready: boolean
     theme: string
+    motionReduced: boolean
 }
 
 
 const StyledContainer = styled.section<ContainerSylesI>`
-    transition: all .2s ease-in-out;
+    transition: opacity ${props => props.motionReduced ? '.4s ease-in': '.2s ease-in-out'};
+    transition: transform ${props => props.motionReduced ? 'none': '.2s ease-in-out'};
     max-width: 40vw;
     opacity: ${props => props.ready ? 1 : 0};
     transform: ${props => props.ready ? `translateX(0)` : `translateX(-10vw)` };
@@ -73,7 +74,7 @@ const StyledContainer = styled.section<ContainerSylesI>`
 const CriteriaTemplate: React.FC<CriteriaI> = ({pageContext}) => {
     const {criteria} = pageContext;
     const [pageReady, setPageReady] = useState<boolean>(false)
-    const {theme} = useContext(PageContext)
+    const {theme, motionReduced} = useContext(PageContext)
 
     useEffect(() => {
         setTimeout(() => {
@@ -83,7 +84,7 @@ const CriteriaTemplate: React.FC<CriteriaI> = ({pageContext}) => {
 
     return (
         <Layout header={criteria.frontmatter.title}>
-            <StyledContainer ready={pageReady} theme={theme}>
+            <StyledContainer ready={pageReady} theme={theme} motionReduced={motionReduced} >
                 <p>{criteria.frontmatter.description}</p>
                 <ContentGrab content={criteria.frontmatter.criteria}/>
                 <div className="mdx-content">
